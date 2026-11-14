@@ -18,18 +18,20 @@ jobs:
           xcodebuild -list \
             -project FreeTube/FreeTube.xcodeproj
 
+
       - name: Build unsigned iOS app
         run: |
           xcodebuild \
             -project FreeTube/FreeTube.xcodeproj \
-            -target FreeTube \
+            -scheme FreeTube \
             -configuration Release \
             -sdk iphoneos \
             -derivedDataPath "$RUNNER_TEMP/DerivedData" \
-            PRODUCT_BUNDLE_IDENTIFIER=com.myiphone.freetube26 \
+            PRODUCT_BUNDLE_IDENTIFIER=com.myphone.freetube26 \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             build
+
 
       - name: Package IPA
         run: |
